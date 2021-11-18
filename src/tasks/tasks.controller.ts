@@ -17,7 +17,7 @@ export class TasksController {
     if any filters defined --> getTasksWithFilters. Otherwise --> just get all tasks
     Examples:
     ../tasks 
-    ../tasks?status=IN_PROGRESS   
+    ../tasks?status=IN_PROGRESS
     ../tasks?status=OPEN&search=cleaning
     */
     if (Object.keys(filterDto).length) {
