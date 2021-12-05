@@ -46,3 +46,10 @@ on PATCH: /tasks/:id/status
 {
   "status": "IN_PROGRESS"
 }
+
+on POST: /auth/signup
+
+{
+  "username": "whatever",
+  "password": "whatever"
+}
