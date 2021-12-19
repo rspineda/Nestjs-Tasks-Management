@@ -53,3 +53,10 @@ on POST: /auth/signup
   "username": "whatever",
   "password": "whatever"
 }
+
+on POST: /auth/signin
+
+{
+  "username": "whatever",
+  "password": "whatever"
+}
