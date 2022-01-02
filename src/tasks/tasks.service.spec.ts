@@ -15,7 +15,7 @@ const mockUser = {
 
 describe('TasksService', () => {
   let tasksService: TasksService;
-  let tasksRepository: TasksRepository;
+  let tasksRepository;
 
   beforeEach(async () => {
     //initialize a NestJS module with taksService and taksRepository
@@ -31,11 +31,11 @@ describe('TasksService', () => {
   });
 
   describe('getTasks', () => {
-    it('calls TasksRepository.getTasks and returns the result', () => {
-      expect(tasksRepository.getTasks).not.toHaveBeenCalled();
+    it('calls TasksRepository.getTasks and returns the result', async () => {
+      tasksRepository.getTasks.mockResolvedValue('someValue');
       // call tasksService.getTasks, which should then call the getTasks' repository
-      tasksService.getTasks(null, mockUser);
-      expect(tasksRepository.getTasks).toHaveBeenCalled();
+      const result = await tasksService.getTasks(null, mockUser);
+      expect(result).toEqual('someValue');
     });
   })
 });
