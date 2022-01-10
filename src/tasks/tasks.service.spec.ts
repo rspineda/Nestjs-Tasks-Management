@@ -2,6 +2,7 @@ import { Test } from '@nestjs/testing';
 import { TasksService } from './tasks.service';
 import { TasksRepository } from './tasks.repository';
 import { TaskStatus } from './task-status.enum';
+import { NotFoundException } from '@nestjs/common';
 
 const mockTasksRepository = () => ({
   getTasks: jest.fn(),
@@ -56,7 +57,8 @@ describe('TasksService', () => {
     });
 
     it('calls TasksRepository.findOne and handles an error', async () => {
-      
+      tasksRepository.findOne.mockResolvedValue(null);
+      expect(tasksService.getTaskById('someId', mockUser)).rejects.toThrow(NotFoundException);
     });
   });
 });
